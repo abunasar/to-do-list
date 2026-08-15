@@ -19,8 +19,32 @@ function showToast(message) {
     }, 3000);
 }
 
-// Load todos on DOM Load
-document.addEventListener('DOMContentLoaded', getLocalTodos);
+// Load todos and apply theme on DOM Load
+document.addEventListener('DOMContentLoaded', () => {
+    getLocalTodos();
+    applySystemTheme();
+});
+
+// Function to handle theme based on system preference
+function applySystemTheme() {
+    // Check if system prefers light mode
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
+    
+    // Function to toggle class
+    const toggleTheme = (e) => {
+        if (e.matches) {
+            document.body.classList.add('light-mode');
+        } else {
+            document.body.classList.remove('light-mode');
+        }
+    };
+
+    // Apply initially
+    toggleTheme(prefersLight);
+
+    // Listen for changes in system preference
+    prefersLight.addEventListener('change', toggleTheme);
+}
 
 const createTodoElement = (text, completed = false) => {
     const li = document.createElement("li");

@@ -274,3 +274,110 @@ ul li.completed .checkBtn {
     font-size: 1rem;
     font-weight: 500;
 }
+
+/* Light Mode Styles */
+body.light-mode {
+    background: #f0f4f8;
+}
+
+body.light-mode .container.glass-panel {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .header h1 {
+    color: #1e293b;
+}
+
+body.light-mode .header p {
+    color: #64748b;
+}
+
+body.light-mode .input-container::before {
+    color: #94a3b8;
+}
+
+body.light-mode .input-container input {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    color: #334155;
+}
+
+body.light-mode .input-container input::placeholder {
+    color: #94a3b8;
+}
+
+body.light-mode .input-container input:focus {
+    border-color: #10b981;
+}
+
+body.light-mode .input-container button {
+    color: #ffffff;
+    background: #10b981;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+}
+
+body.light-mode .input-container button:hover {
+    background: #059669;
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+}
+
+body.light-mode .todoList::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+}
+
+body.light-mode .todoList::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+body.light-mode ul li {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #334155;
+}
+
+body.light-mode ul li:hover {
+    border-color: #cbd5e1;
+}
+
+body.light-mode ul li.completed p {
+    color: #94a3b8;
+}
+
+body.light-mode ul li.completed .checkBtn {
+    color: #10b981;
+}
+
+body.light-mode .checkBtn {
+    color: #94a3b8;
+}
+
+body.light-mode .checkBtn:hover {
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+}
+
+body.light-mode .editBtn {
+    color: #64748b;
+}
+
+body.light-mode .editBtn:hover {
+    color: #0f172a;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .deleteBtn {
+    color: #64748b;
+}
+
+body.light-mode .deleteBtn:hover {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+body.light-mode .toast {
+    background: #ffffff;
+    color: #1e293b;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
