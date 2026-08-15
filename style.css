@@ -1,102 +1,276 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Outfit', sans-serif;
 }
 
-body{
-    background-color: rgb(232, 238, 238);
-}
-
-.container{
+body {
+    background: #171818;
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
 }
 
-.input-container{
-    width: 100%;
-    max-width: 500px;
-    text-align: center;
-    padding: 20px;
+.background-animation {
+    display: none;
 }
 
-.input-container input{
-    border: none;
-    outline: none;
-    padding: 12px;
-    margin-block: 12px;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-.input-container input[type="text"]{
-    width: 70%;
-}
-
-.input-container input[type="button"]{
-    background-color: #3da33d;
-    color: #fff;
-    font-weight: 700;
-    margin-left: 8px;
-    cursor: pointer;
-    padding: 12px 24px;
-}
-
-.input-container input[type="button"]:hover{
-    background-color: #60b160;
-}
-
-ul{
-    width: 70%;
-    max-width: 450px;
-    /* display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center; */
-}
-
-ul li{
-    list-style-type: none;
-    cursor: pointer;
-    margin-block-end: 12px;
-    border-radius: 8px;
-    border: 0.125px solid #a19f9f;
-    padding: 6px 12px;
-    background-color: #ffffff;
+/* Main Container */
+.container.glass-panel {
+    background: #1c221f;
+    border-radius: 20px;
+    padding: 40px;
+    width: 90%;
+    max-width: 550px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     display: flex;
+    flex-direction: column;
+    gap: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header {
+    text-align: left;
+    color: #f1f5f9;
+}
+
+.header h1 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #ffffff;
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    transition: background-color 0.5s;
+    gap: 12px;
 }
 
-ul li:hover{
-    background-color: #cbcaca;
+.header h1 i {
+    font-size: 1.8rem;
+    color: #1dd186; /* Accent color */
 }
 
-ul li p{
-    flex-grow: 1;
-    padding: 2px;
+.header p {
+    color: #8b9893;
+    font-size: 1rem;
+    font-weight: 300;
 }
-.btn{
-    border: none;
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-container::before {
+    content: 'ADD A TASK';
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #64736d;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.input-container input {
+    background: #111413;
+    border: 1px solid #2a342f;
+    padding: 16px 20px;
+    border-radius: 12px;
+    color: #e0e0e0;
+    font-size: 1rem;
     outline: none;
-    font-size: 16px;
-    background: none;
+    transition: all 0.3s ease;
+}
+
+.input-container input::placeholder {
+    color: #4b5853;
+}
+
+.input-container input:focus {
+    border-color: #1dd186;
+}
+
+.input-container button {
+    background: #1dd186;
+    color: #0f1c16;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
-    padding: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(29, 209, 134, 0.1);
 }
 
-.deleteBtn{
-    color: #ff0000;
+.input-container button:hover {
+    background: #25e595;
+    box-shadow: 0 6px 20px rgba(29, 209, 134, 0.2);
 }
 
-.editBtn{
-    color: #008000;
+.input-container button:active {
+    transform: translateY(2px);
+}
+
+.todoList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+/* Custom Scrollbar */
+.todoList::-webkit-scrollbar {
+    width: 6px;
+}
+.todoList::-webkit-scrollbar-track {
+    background: transparent;
+}
+.todoList::-webkit-scrollbar-thumb {
+    background: #2a342f;
+    border-radius: 8px;
+}
+.todoList::-webkit-scrollbar-thumb:hover {
+    background: #3e4a44;
+}
+
+ul li {
+    list-style: none;
+    background: #111413;
+    border: 1px solid #2a342f;
+    padding: 16px 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+    animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+ul li.fadeOut {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.9); }
+}
+
+ul li:hover {
+    border-color: #3e4a44;
+}
+
+ul li p {
+    flex-grow: 1;
+    font-size: 1rem;
+    word-break: break-all;
+    transition: color 0.3s ease;
+}
+
+ul li.completed p {
+    text-decoration: line-through;
+    color: #4b5853;
+}
+
+ul li.completed .checkBtn {
+    color: #1dd186;
+}
+
+.btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.checkBtn {
+    color: #4b5853;
+}
+
+.checkBtn:hover {
+    color: #1dd186;
+    background: rgba(29, 209, 134, 0.1);
+}
+
+.editBtn {
+    color: #64736d;
+}
+
+.editBtn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.deleteBtn {
+    color: #64736d;
+}
+
+.deleteBtn:hover {
+    color: #ff4d4d;
+    background: rgba(255, 77, 77, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .container.glass-panel {
+        padding: 24px 20px;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    top: 30px;
+    right: 50%;
+    transform: translateX(50%) translateY(-100px);
+    background: #111413;
+    color: #e0e0e0;
+    padding: 16px 24px;
+    border-radius: 12px;
+    border-left: 4px solid #ff4d4d;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.toast.show {
+    transform: translateX(50%) translateY(0);
+    opacity: 1;
+}
+
+.toast i {
+    color: #ff4d4d;
+    font-size: 1.2rem;
+}
+
+.toast p {
+    font-size: 1rem;
+    font-weight: 500;
 }

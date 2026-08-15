@@ -4,22 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <title>To Do List - JavaScript Project</title>
+    <title>Premium To-Do List</title>
 </head>
 <body>
-    <div class="container">
+    <div class="background-animation">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    
+    <div class="container glass-panel">
+        <div class="header">
+            <h1>Tasks <i class="fa-solid fa-check-double"></i></h1>
+            <p>What needs to be done today?</p>
+        </div>
         <div class="input-container">
-            <h1>My To Do List</h1>
-            <input type="text" placeholder="Add a new to do..." id="inputBox">
-            <input type="button" value="Add" id="addBtn">
+            <input type="text" placeholder="Add a new task..." id="inputBox" autocomplete="off">
+            <button id="addBtn">Add Task</button>
         </div>
 
         <ul class="todoList" id="todoList">
-            <!-- <li><p>Task1</p></li>
-            <li>Task2</li>
-            <li>Task3</li> -->
+            <!-- Items injected by JS -->
         </ul>
+    </div>
+
+    <!-- Custom Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <p id="toastMessage">Message</p>
     </div>
 
     <script src="script.js"></script>
